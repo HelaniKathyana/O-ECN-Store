@@ -5,7 +5,7 @@ MySQL is the most popular database system used with PHP.
 
 # PHP Connect to MySQL
 
-Open a Connection to MySQL
+=Open a Connection to MySQL=
 
 <?php
 $servername = "localhost";
