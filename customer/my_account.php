@@ -52,7 +52,7 @@
 
            <div class="navbar-header"><!-- navbar-header Begin -->
 
-               <a href="index.php" class="navbar-brand home"><!-- navbar-brand home Begin -->
+               <a href="../index.php" class="navbar-brand home"><!-- navbar-brand home Begin -->
 
                    <img src="images/oecn-store-logo.png" alt="O-ECN-Store Logo" class="hidden-xs">
                    <img src="images/oecn-store-logo-mobile.png" alt="O-ECN-Store Logo Mobile" class="visible-xs">
@@ -186,6 +186,38 @@
 
                    if (isset($_GET['my_orders'])){
                        include("my_orders.php");
+                   }
+
+                   ?>
+
+                    <?php
+
+                   if (isset($_GET['pay_offline'])){
+                       include("pay_offline.php");
+                   }
+
+                   ?>
+
+                    <?php
+
+                   if (isset($_GET['edit_account'])){
+                       include("edit_account.php");
+                   }
+
+                   ?>
+
+                    <?php
+
+                   if (isset($_GET['change_pass'])){
+                       include("change_pass.php");
+                   }
+
+                   ?>
+
+                    <?php
+
+                   if (isset($_GET['delete_account'])){
+                       include("delete_account.php");
                    }
 
                    ?>
