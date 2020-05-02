@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+
 <?php
 
     $active='Shop';
@@ -202,7 +207,13 @@
                    </ul><!-- pagination Finish -->
                </center>
 
-                <?php getpcatpro(); ?>
+                <?php
+
+               getpcatpro();
+
+               getcatpro();
+
+               ?>
 
            </div><!-- col-md-9 Finish -->
 
