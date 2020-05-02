@@ -140,7 +140,7 @@
         </div><!-- col-md-6 Finish -->
         <div class="col-md-6"><!-- col-md-6 Begin -->
 
-            <p class="pull-right">Theme by: <a href="#">MrGhie</a></p>
+            <p class="pull-right">Theme by: <a href="#">MsHelani</a></p>
 
         </div><!-- col-md-6 Finish -->
     </div><!-- container Finish -->
