@@ -1,8 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<body>
-
 <?php
 
     $active='Cart';
@@ -38,7 +33,7 @@
 
     ?>
 
-   </div><!-- col-md-3 Finish -->
+           </div><!-- col-md-3 Finish -->
 
            <div class="col-md-9"><!-- col-md-9 Begin -->
                <div id="productMain" class="row"><!-- row Begin -->
@@ -81,7 +76,9 @@
                        <div class="box"><!-- box Begin -->
                            <h1 class="text-center"> <?php echo $pro_title; ?> </h1>
 
-                           <form action="index.php?add_cart=<?php echo $pro_id; ?>" class="form-horizontal" method="post"><!-- form-horizontal Begin -->
+                           <?php add_cart(); ?>
+
+                           <form action="details.php?add_cart=<?php echo $product_id; ?>" class="form-horizontal" method="post"><!-- form-horizontal Begin -->
                                <div class="form-group"><!-- form-group Begin -->
                                    <label for="" class="col-md-5 control-label">Products Quantity</label>
 
@@ -103,9 +100,9 @@
 
                                    <div class="col-md-7"><!-- col-md-7 Begin -->
 
-                                       <select name="product_size" class="form-control"><!-- form-control Begin -->
+                                       <select name="product_size" class="form-control" required oninput="setCustomValidity('')" oninvalid="setCustomValidity('Must pick 1 size for the product')"><!-- form-control Begin -->
 
-                                           <option>Select a Size</option>
+                                           <option disabled selected>Select a Size</option>
                                            <option>Small</option>
                                            <option>Medium</option>
                                            <option>Large</option>
@@ -181,7 +178,7 @@
 
                    <?php
 
-                    $get_products = "select * from products order by 1 DESC LIMIT 0,3";
+                    $get_products = "select * from products order by rand() LIMIT 0,3";
 
                     $run_products = mysqli_query($con,$get_products);
 
