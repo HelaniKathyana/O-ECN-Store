@@ -62,7 +62,7 @@ if(isset($_GET['pro_id'])){
            <div class="col-md-6 offer">
 
                <a href="#" class="btn btn-success btn-sm">Welcome</a>
-               <a href="checkout.php">4 Items In Your Cart | Total Price: $300 </a>
+               <a href="checkout.php">4 Items In Your Cart | Total Price: <?php total_price(); ?> </a>
 
            </div><!-- col-md-6 offer Finish -->
 
