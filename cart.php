@@ -10,7 +10,7 @@
 
 ?>
 
-   <div id="content"><!-- #content Begin -->
+ <div id="content"><!-- #content Begin -->
        <div class="container"><!-- container Begin -->
            <div class="col-md-12"><!-- col-md-12 Begin -->
 
@@ -32,7 +32,20 @@
                    <form action="cart.php" method="post" enctype="multipart/form-data"><!-- form Begin -->
 
                        <h1>Shopping Cart</h1>
-                       <p class="text-muted">You currently have 3 item(s) in your cart</p>
+
+                       <?php
+
+                       $ip_add = getRealIpUser();
+
+                       $select_cart = "select * from cart where ip_add='$ip_add'";
+
+                       $run_cart = mysqli_query($con,$select_cart);
+
+                       $count = mysqli_num_rows($run_cart);
+
+                       ?>
+
+                       <p class="text-muted">You currently have <?php echo $count; ?> item(s) in your cart</p>
 
                        <div class="table-responsive"><!-- table-responsive Begin -->
 
@@ -55,151 +68,83 @@
 
                                <tbody><!-- tbody Begin -->
 
-                                   <tr><!-- tr Begin -->
+                                  <?php
 
-                                       <td>
+                                   $total = 0;
 
-                                           <img class="img-responsive" src="admin_area/product_images/Product-3a.jpeg" alt="Product 3a">
+                                   while($row_cart = mysqli_fetch_array($run_cart)){
 
-                                       </td>
+                                     $pro_id = $row_cart['p_id'];
 
-                                       <td>
+                                     $pro_size = $row_cart['size'];
 
-                                           <a href="#">O-ECN Polo Shirt Men</a>
+                                     $pro_qty = $row_cart['qty'];
 
-                                       </td>
+                                       $get_products = "select * from products where product_id='$pro_id'";
 
-                                       <td>
+                                       $run_products = mysqli_query($con,$get_products);
 
-                                           2
+                                       while($row_products = mysqli_fetch_array($run_products)){
 
-                                       </td>
+                                           $product_title = $row_products['product_title'];
 
-                                       <td>
+                                           $product_img1 = $row_products['product_img1'];
 
-                                           $50
+                                           $only_price = $row_products['product_price'];
 
-                                       </td>
+                                           $sub_total = $row_products['product_price']*$pro_qty;
 
-                                       <td>
+                                           $total += $sub_total;
 
-                                           Large
-
-                                       </td>
-
-                                       <td>
-
-                                           <input type="checkbox" name="remove[]">
-
-                                       </td>
-
-                                       <td>
-
-                                           $100
-
-                                       </td>
-
-                                   </tr><!-- tr Finish -->
-
-                               </tbody><!-- tbody Finish -->
-
-                               <tbody><!-- tbody Begin -->
+                                   ?>
 
                                    <tr><!-- tr Begin -->
 
                                        <td>
 
-                                           <img class="img-responsive" src="admin_area/product_images/product-1.jpeg" alt="Product 3a">
+                                           <img class="img-responsive" src="admin_area/product_images/<?php echo $product_img1; ?>" alt="Product 3a">
 
                                        </td>
 
                                        <td>
 
-                                           <a href="#">O-ECN Woman T-Shirt </a>
+                                           <a href="details.php?pro_id=<?php echo $pro_id; ?>"> <?php echo $product_title; ?> </a>
 
                                        </td>
 
                                        <td>
 
-                                           2
+                                           <?php echo $pro_qty; ?>
 
                                        </td>
 
                                        <td>
 
-                                           $50
+                                           <?php echo $only_price; ?>
 
                                        </td>
 
                                        <td>
 
-                                           Large
+                                           <?php echo $pro_size; ?>
 
                                        </td>
 
                                        <td>
 
-                                           <input type="checkbox" name="remove[]">
+                                           <input type="checkbox" name="remove[]" value="<?php echo $pro_id; ?>">
 
                                        </td>
 
                                        <td>
 
-                                           $100
+                                           $<?php echo $sub_total; ?>
 
                                        </td>
 
                                    </tr><!-- tr Finish -->
 
-                               </tbody><!-- tbody Finish -->
-
-                               <tbody><!-- tbody Begin -->
-
-                                   <tr><!-- tr Begin -->
-
-                                       <td>
-
-                                           <img class="img-responsive" src="admin_area/product_images/Product-6a.jpeg" alt="Product 3a">
-
-                                       </td>
-
-                                       <td>
-
-                                           <a href="#">O-ECN Woman Tank Top </a>
-
-                                       </td>
-
-                                       <td>
-
-                                           2
-
-                                       </td>
-
-                                       <td>
-
-                                           $50
-
-                                       </td>
-
-                                       <td>
-
-                                           Large
-
-                                       </td>
-
-                                       <td>
-
-                                           <input type="checkbox" name="remove[]">
-
-                                       </td>
-
-                                       <td>
-
-                                           $100
-
-                                       </td>
-
-                                   </tr><!-- tr Finish -->
+                                   <?php } } ?>
 
                                </tbody><!-- tbody Finish -->
 
@@ -208,7 +153,7 @@
                                    <tr><!-- tr Begin -->
 
                                        <th colspan="5">Total</th>
-                                       <th colspan="2">$100</th>
+                                       <th colspan="2">$<?php echo $total; ?></th>
 
                                    </tr><!-- tr Finish -->
 
@@ -252,6 +197,36 @@
 
                </div><!-- box Finish -->
 
+               <?php
+
+                function update_cart(){
+
+                    global $con;
+
+                    if(isset($_POST['update'])){
+
+                        foreach($_POST['remove'] as $remove_id){
+
+                            $delete_product = "delete from cart where p_id='$remove_id'";
+
+                            $run_delete = mysqli_query($con,$delete_product);
+
+                            if($run_delete){
+
+                                echo "<script>window.open('cart.php','_self')</script>";
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+               echo @$up_cart = update_cart();
+
+               ?>
+
                <div id="row same-heigh-row"><!-- #row same-heigh-row Begin -->
                    <div class="col-md-3 col-sm-6"><!-- col-md-3 col-sm-6 Begin -->
                        <div class="box same-height headline"><!-- box same-height headline Begin -->
@@ -259,53 +234,45 @@
                        </div><!-- box same-height headline Finish -->
                    </div><!-- col-md-3 col-sm-6 Finish -->
 
-                   <div class="col-md-3 col-sm-6 center-responsive"><!-- col-md-3 col-sm-6 center-responsive Begin -->
-                       <div class="product same-height"><!-- product same-height Begin -->
-                           <a href="details.php">
-                               <img class="img-responsive" src="admin_area/product_images/Product-6a.jpeg" alt="Product 6">
+                   <?php
+
+                   $get_products = "select * from products order by rand() LIMIT 0,3";
+
+                   $run_products = mysqli_query($con,$get_products);
+
+                   while($row_products=mysqli_fetch_array($run_products)){
+
+                       $pro_id = $row_products['product_id'];
+
+                       $pro_title = $row_products['product_title'];
+
+                       $pro_price = $row_products['product_price'];
+
+                       $pro_img1 = $row_products['product_img1'];
+
+                       echo "
+
+                    <div class='col-md-3 col-sm-6 center-responsive'><!-- col-md-3 col-sm-6 center-responsive Begin -->
+                       <div class='product same-height'><!-- product same-height Begin -->
+                           <a href='details.php?pro_id=$pro_id'>
+                               <img class='img-responsive' src='admin_area/product_images/$pro_img1' alt='Product 6'>
                             </a>
 
-                            <div class="text"><!-- text Begin -->
-                                <h3><a href="details.php">O-ECN Tank Top Women</a></h3>
+                            <div class='text'><!-- text Begin -->
+                                <h3><a href='details.php?pro_id=$pro_id'> $pro_title </a></h3>
 
-                                <p class="price">$40</p>
+                                <p class='price'>$$pro_price</p>
 
                             </div><!-- text Finish -->
 
                         </div><!-- product same-height Finish -->
                    </div><!-- col-md-3 col-sm-6 center-responsive Finish -->
 
-                   <div class="col-md-3 col-sm-6 center-responsive"><!-- col-md-3 col-sm-6 center-responsive Begin -->
-                       <div class="product same-height"><!-- product same-height Begin -->
-                           <a href="details.php">
-                               <img class="img-responsive" src="admin_area/product_images/Product-5a.jpeg" alt="Product 6">
-                            </a>
+                       ";
 
-                            <div class="text"><!-- text Begin -->
-                                <h3><a href="details.php">O-ECN Street Shirt Women</a></h3>
+                   }
 
-                                <p class="price">$45</p>
-
-                            </div><!-- text Finish -->
-
-                        </div><!-- product same-height Finish -->
-                   </div><!-- col-md-3 col-sm-6 center-responsive Finish -->
-
-                   <div class="col-md-3 col-sm-6 center-responsive"><!-- col-md-3 col-sm-6 center-responsive Begin -->
-                       <div class="product same-height"><!-- product same-height Begin -->
-                           <a href="details.php">
-                               <img class="img-responsive" src="admin_area/product_images/Product-4a.jpeg" alt="Product 6">
-                            </a>
-
-                            <div class="text"><!-- text Begin -->
-                                <h3><a href="details.php">O-ECN Polo T-Shirt Women</a></h3>
-
-                                <p class="price">$50</p>
-
-                            </div><!-- text Finish -->
-
-                        </div><!-- product same-height Finish -->
-                   </div><!-- col-md-3 col-sm-6 center-responsive Finish -->
+                   ?>
 
                </div><!-- #row same-heigh-row Finish -->
 
@@ -335,8 +302,8 @@
 
                                <tr><!-- tr Begin -->
 
-                                   <td> Order Sub-Total </td>
-                                   <th> $200 </th>
+                                   <td> Order All Sub-Total </td>
+                                   <th> $<?php echo $total; ?> </th>
 
                                </tr><!-- tr Finish -->
 
@@ -357,7 +324,7 @@
                                <tr class="total"><!-- tr Begin -->
 
                                    <td> Total </td>
-                                   <th> $200 </th>
+                                   <th> $<?php echo $total; ?> </th>
 
                                </tr><!-- tr Finish -->
 
