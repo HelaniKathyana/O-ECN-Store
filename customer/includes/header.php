@@ -17,14 +17,30 @@ include("functions/functions.php");
 </head>
 <body>
 
-   <div id="top"><!-- Top Begin -->
+ <div id="top"><!-- Top Begin -->
 
        <div class="container"><!-- container Begin -->
 
            <div class="col-md-6 offer"><!-- col-md-6 offer Begin -->
 
-               <a href="#" class="btn btn-success btn-sm">Welcome</a>
-               <a href="checkout.php">4 Items In Your Cart | Total Price: <?php total_price(); ?> </a>
+               <a href="#" class="btn btn-success btn-sm">
+
+                   <?php
+
+                   if(!isset($_SESSION['customer_email'])){
+
+                       echo "Welcome: Guest";
+
+                   }else{
+
+                       echo "Welcome: " . $_SESSION['customer_email'] . "";
+
+                   }
+
+                   ?>
+
+               </a>
+               <a href="checkout.php"> <?php items(); ?> Items In Your Cart | Total Price: <?php total_price(); ?> </a>
 
            </div><!-- col-md-6 offer Finish -->
 
@@ -42,7 +58,23 @@ include("functions/functions.php");
                        <a href="../cart.php">Go To Cart</a>
                    </li>
                    <li>
-                       <a href="../checkout.php">Login</a>
+                       <a href="../checkout.php">
+
+                        <?php
+
+                           if(!isset($_SESSION['customer_email'])){
+
+                                echo "<a href='checkout.php'> Login </a>";
+
+                               }else{
+
+                                echo " <a href='logout.php'> Log Out </a> ";
+
+                               }
+
+                         ?>
+
+                       </a>
                    </li>
 
                </ul><!-- menu Finish -->
@@ -62,7 +94,7 @@ include("functions/functions.php");
                <a href="../index.php" class="navbar-brand home"><!-- navbar-brand home Begin -->
 
                    <img src="images/oecn-store-logo.png" alt="O-ECN-Store Logo" class="hidden-xs">
-                   <img src="images/oecn-store-logo-mobile.png" alt="O-ECN-Store Logo Mobile" class="visible-xs">
+                   <img src="images/oecn-store-logo-mobile.jpg" alt="O-ECN-Store Logo Mobile" class="visible-xs">
 
                </a><!-- navbar-brand home Finish -->
 
