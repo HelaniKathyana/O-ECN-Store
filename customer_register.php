@@ -33,7 +33,7 @@
 
     ?>
 
-            </div><!-- col-md-3 Finish -->
+           </div><!-- col-md-3 Finish -->
 
            <div class="col-md-9"><!-- col-md-9 Begin -->
 
@@ -207,5 +207,3 @@ if(isset($_POST['register'])){
     }
 
 }
-
-?>
