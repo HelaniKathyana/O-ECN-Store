@@ -6,7 +6,7 @@
     <title>O-ECN Store Admin Area</title>
     <link rel="stylesheet" href="css/bootstrap-337.min.css">
     <link rel="stylesheet" href="font-awsome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -17,7 +17,15 @@
         <div id="page-wrapper"><!-- #page-wrapper begin -->
             <div class="container-fluid"><!-- container-fluid begin -->
 
+                <?php
 
+                    if(isset($_GET['dashboard'])){
+
+                        include("dashboard.php");
+
+                }
+
+                ?>
 
             </div><!-- container-fluid finish -->
         </div><!-- #page-wrapper finish -->
