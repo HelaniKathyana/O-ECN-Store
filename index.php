@@ -1,8 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<body>
-
 <?php
 
     $active='Home';
@@ -27,7 +22,7 @@
 
                <div class="carousel-inner"><!-- carousel-inner Begin -->
 
-<?php
+                  <?php
 
                    $get_slides = "select * from slider LIMIT 0,1";
 
@@ -37,12 +32,17 @@
 
                        $slide_name = $row_slides['slide_name'];
                        $slide_image = $row_slides['slide_image'];
+                       $slide_url = $row_slides['slide_url'];
 
                        echo "
 
                        <div class='item active'>
 
-                       <img src='admin_area/slides_images/$slide_image'>
+                           <a href='$slide_url'>
+
+                                <img src='admin_area/slides_images/$slide_image'>
+
+                           </a>
 
                        </div>
 
@@ -58,12 +58,17 @@
 
                        $slide_name = $row_slides['slide_name'];
                        $slide_image = $row_slides['slide_image'];
+                       $slide_url = $row_slides['slide_url'];
 
                        echo "
 
                        <div class='item'>
 
-                       <img src='admin_area/slides_images/$slide_image'>
+                           <a href='$slide_url'>
+
+                                <img src='admin_area/slides_images/$slide_image'>
+
+                           </a>
 
                        </div>
 
