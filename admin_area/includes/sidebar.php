@@ -197,6 +197,25 @@
             </li><!-- li finish -->
 
             <li><!-- li begin -->
+                <a href="#" data-toggle="collapse" data-target="#terms"><!-- a href begin -->
+
+                        <i class="fa fa-fw fa-table"></i> Terms
+                        <i class="fa fa-fw fa-caret-down"></i>
+
+                </a><!-- a href finish -->
+
+                <ul id="terms" class="collapse"><!-- collapse begin -->
+                    <li><!-- li begin -->
+                        <a href="index.php?insert_terms"> Insert Term </a>
+                    </li><!-- li finish -->
+                    <li><!-- li begin -->
+                        <a href="index.php?view_terms"> View Terms </a>
+                    </li><!-- li finish -->
+                </ul><!-- collapse finish -->
+
+            </li><!-- li finish -->
+
+            <li><!-- li begin -->
                 <a href="index.php?view_customers"><!-- a href begin -->
                     <i class="fa fa-fw fa-users"></i> View Customers
                 </a><!-- a href finish -->
