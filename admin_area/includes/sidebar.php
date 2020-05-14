@@ -234,6 +234,12 @@
             </li><!-- li finish -->
 
             <li><!-- li begin -->
+                <a href="index.php?edit_css"><!-- a href begin -->
+                    <i class="fa fa-fw fa-pencil"></i> CSS Editor
+                </a><!-- a href finish -->
+            </li><!-- li finish -->
+
+            <li><!-- li begin -->
                 <a href="#" data-toggle="collapse" data-target="#users"><!-- a href begin -->
 
                         <i class="fa fa-fw fa-users"></i> Users

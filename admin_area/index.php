@@ -220,6 +220,10 @@
 
                         include("edit_term.php");
 
+                }   if(isset($_GET['edit_css'])){
+
+                        include("edit_css.php");
+
                 }
 
                 ?>
