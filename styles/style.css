@@ -453,6 +453,6 @@ body{
     color: #fff;
 }
 .product a img.img-responsive{
-    max-height: 252px;
+    max-height: 500px;
     width: 100%;
 }
