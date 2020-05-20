@@ -80,7 +80,7 @@
                             <tr><!-- tr begin -->
                                 <td> <?php echo $i; ?> </td>
                                 <td> <?php echo $pro_title; ?> </td>
-                                <td> <img src="product_images/<?php echo $pro_img1; ?>" width="40" height="60"></td>
+                                <td> <img src="product_images/<?php echo $pro_img1; ?>" width="60" height="60"></td>
                                 <td> $ <?php echo $pro_price; ?> </td>
                                 <td> <?php
 

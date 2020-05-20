@@ -64,7 +64,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>O-ECN Store Admin Area</title>
+    <title>M-Dev Store Admin Area</title>
     <link rel="stylesheet" href="css/bootstrap-337.min.css">
     <link rel="stylesheet" href="font-awsome/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
@@ -84,7 +84,7 @@
 
                         include("dashboard.php");
 
-                } if(isset($_GET['insert_product'])){
+                }   if(isset($_GET['insert_product'])){
 
                         include("insert_product.php");
 
@@ -116,7 +116,7 @@
 
                         include("edit_p_cat.php");
 
-                }  if(isset($_GET['insert_cat'])){
+                }   if(isset($_GET['insert_cat'])){
 
                         include("insert_cat.php");
 
@@ -148,7 +148,23 @@
 
                         include("edit_slide.php");
 
-                } if(isset($_GET['view_customers'])){
+                }   if(isset($_GET['insert_box'])){
+
+                        include("insert_box.php");
+
+                }   if(isset($_GET['view_boxes'])){
+
+                        include("view_boxes.php");
+
+                }   if(isset($_GET['delete_box'])){
+
+                        include("delete_box.php");
+
+                }   if(isset($_GET['edit_box'])){
+
+                        include("edit_box.php");
+
+                }   if(isset($_GET['view_customers'])){
 
                         include("view_customers.php");
 
@@ -188,22 +204,6 @@
 
                         include("user_profile.php");
 
-                } if(isset($_GET['insert_box'])){
-
-                        include("insert_box.php");
-
-                }   if(isset($_GET['view_boxes'])){
-
-                        include("view_boxes.php");
-
-                }   if(isset($_GET['delete_box'])){
-
-                        include("delete_box.php");
-
-                }   if(isset($_GET['edit_box'])){
-
-                        include("edit_box.php");
-
                 }   if(isset($_GET['insert_terms'])){
 
                         include("insert_terms.php");
@@ -240,8 +240,23 @@
 
                         include("edit_manufacturer.php");
 
-                }
+                }   if(isset($_GET['insert_coupon'])){
 
+                        include("insert_coupon.php");
+
+                }   if(isset($_GET['view_coupons'])){
+
+                        include("view_coupons.php");
+
+                }   if(isset($_GET['delete_coupon'])){
+
+                        include("delete_coupon.php");
+
+                }   if(isset($_GET['edit_coupon'])){
+
+                        include("edit_coupon.php");
+
+                }
 
                 ?>
 

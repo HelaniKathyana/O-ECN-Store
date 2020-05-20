@@ -216,6 +216,25 @@
             </li><!-- li finish -->
 
             <li><!-- li begin -->
+                <a href="#" data-toggle="collapse" data-target="#coupon"><!-- a href begin -->
+
+                        <i class="fa fa-fw fa-book"></i> Coupons
+                        <i class="fa fa-fw fa-caret-down"></i>
+
+                </a><!-- a href finish -->
+
+                <ul id="coupon" class="collapse"><!-- collapse begin -->
+                    <li><!-- li begin -->
+                        <a href="index.php?insert_coupon"> Insert Coupon </a>
+                    </li><!-- li finish -->
+                    <li><!-- li begin -->
+                        <a href="index.php?view_coupons"> View Coupons </a>
+                    </li><!-- li finish -->
+                </ul><!-- collapse finish -->
+
+            </li><!-- li finish -->
+
+            <li><!-- li begin -->
                 <a href="#" data-toggle="collapse" data-target="#terms"><!-- a href begin -->
 
                         <i class="fa fa-fw fa-table"></i> Terms
