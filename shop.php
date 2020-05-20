@@ -1,3 +1,5 @@
+<html>
+<body>
 <?php
 
     $active='Shop';

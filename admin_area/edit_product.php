@@ -38,9 +38,13 @@
 
         $p_price = $row_edit['product_price'];
 
+        $p_sale = $row_edit['product_sale'];
+
         $p_keywords = $row_edit['product_keywords'];
 
         $p_desc = $row_edit['product_desc'];
+
+        $p_label = $row_edit['product_label'];
 
     }
 
@@ -307,6 +311,18 @@
 
                    <div class="form-group"><!-- form-group Begin -->
 
+                      <label class="col-md-3 control-label"> Sale Price </label>
+
+                      <div class="col-md-6"><!-- col-md-6 Begin -->
+
+                          <input name="product_sale" type="text" class="form-control" required value="<?php echo $p_sale; ?>">
+
+                      </div><!-- col-md-6 Finish -->
+
+                   </div><!-- form-group Finish -->
+
+                   <div class="form-group"><!-- form-group Begin -->
+
                       <label class="col-md-3 control-label"> Product Keywords </label>
 
                       <div class="col-md-6"><!-- col-md-6 Begin -->
@@ -328,6 +344,18 @@
                               <?php echo $p_desc; ?>
 
                           </textarea>
+
+                      </div><!-- col-md-6 Finish -->
+
+                   </div><!-- form-group Finish -->
+
+                   <div class="form-group"><!-- form-group Begin -->
+
+                      <label class="col-md-3 control-label"> Product Label </label>
+
+                      <div class="col-md-6"><!-- col-md-6 Begin -->
+
+                          <input name="product_label" type="text" class="form-control" required value="<?php echo $p_label; ?>">
 
                       </div><!-- col-md-6 Finish -->
 
@@ -370,8 +398,10 @@ if(isset($_POST['update'])){
     $cat = $_POST['cat'];
     $manufacturer_id = $_POST['manufacturer'];
     $product_price = $_POST['product_price'];
+    $product_sale = $_POST['product_sale'];
     $product_keywords = $_POST['product_keywords'];
     $product_desc = $_POST['product_desc'];
+    $product_label = $_POST['product_label'];
 
     if(is_uploaded_file($_FILES['file']['tmp_name'])){
 
@@ -389,7 +419,7 @@ if(isset($_POST['update'])){
         move_uploaded_file($temp_name2,"product_images/$product_img2");
         move_uploaded_file($temp_name3,"product_images/$product_img3");
 
-        $update_product = "update products set p_cat_id='$product_cat',cat_id='$cat',manufacturer_id='$manufacturer_id',date=NOW(),product_title='$product_title',product_img1='$product_img1',product_img2='$product_img2',product_img3='$product_img3',product_keywords='$product_keywords',product_desc='$product_desc',product_price='$product_price' where product_id='$p_id'";
+        $update_product = "update products set p_cat_id='$product_cat',cat_id='$cat',manufacturer_id='$manufacturer_id',date=NOW(),product_title='$product_title',product_img1='$product_img1',product_img2='$product_img2',product_img3='$product_img3',product_price='$product_price',product_keywords='$product_keywords',product_desc='$product_desc',product_sale='$product_sale',product_label='$product_label' where product_id='$p_id'";
 
         $run_product = mysqli_query($con,$update_product);
 
@@ -405,7 +435,7 @@ if(isset($_POST['update'])){
 
         // work when no update image
 
-        $update_product = "update products set p_cat_id='$product_cat',cat_id='$cat',manufacturer_id='$manufacturer_id',date=NOW(),product_title='$product_title',product_keywords='$product_keywords',product_desc='$product_desc',product_price='$product_price' where product_id='$p_id'";
+        $update_product = "update products set p_cat_id='$product_cat',cat_id='$cat',manufacturer_id='$manufacturer_id',date=NOW(),product_title='$product_title',product_price='$product_price',product_keywords='$product_keywords',product_desc='$product_desc',product_sale='$product_sale',product_label='$product_label' where product_id='$p_id'";
 
         $run_product = mysqli_query($con,$update_product);
 

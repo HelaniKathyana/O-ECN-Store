@@ -1,8 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<body>
-
 <?php
 
     $active='Cart';
@@ -10,7 +5,7 @@
 
 ?>
 
- <div id="content"><!-- #content Begin -->
+   <div id="content"><!-- #content Begin -->
        <div class="container"><!-- container Begin -->
            <div class="col-md-12"><!-- col-md-12 Begin -->
 
