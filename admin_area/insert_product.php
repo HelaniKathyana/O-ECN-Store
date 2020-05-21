@@ -69,6 +69,22 @@
 
                    <div class="form-group"><!-- form-group Begin -->
 
+                      <label class="col-md-3 control-label"> Product Url </label>
+
+                      <div class="col-md-6"><!-- col-md-6 Begin -->
+
+                          <input name="product_url" type="text" class="form-control" required>
+
+                          <br>
+
+                          <p style="font-weight:bold;font-style:italic;font-size:16px;"> Use Dash '-' for url </p>
+
+                      </div><!-- col-md-6 Finish -->
+
+                   </div><!-- form-group Finish -->
+
+                   <div class="form-group"><!-- form-group Begin -->
+
                       <label class="col-md-3 control-label"> Manufacturer </label>
 
                       <div class="col-md-6"><!-- col-md-6 Begin -->
@@ -265,7 +281,15 @@
 
                       <div class="col-md-6"><!-- col-md-6 Begin -->
 
-                          <input name="product_label" type="text" class="form-control">
+                        <select name="product_label">
+
+                            <option selected disabled> Select Label Product </option>
+
+                            <option value="new">New Product</option>
+
+                            <option value="sale">Sale Product</option>
+
+                        </select>
 
                       </div><!-- col-md-6 Finish -->
 
@@ -304,6 +328,7 @@
 if(isset($_POST['submit'])){
 
     $product_title = $_POST['product_title'];
+    $product_url = $_POST['product_url'];
     $product_cat = $_POST['product_cat'];
     $cat = $_POST['cat'];
     $manufacturer_id = $_POST['manufacturer'];
@@ -325,7 +350,7 @@ if(isset($_POST['submit'])){
     move_uploaded_file($temp_name2,"product_images/$product_img2");
     move_uploaded_file($temp_name3,"product_images/$product_img3");
 
-    $insert_product = "insert into products (p_cat_id,cat_id,manufacturer_id,date,product_title,product_img1,product_img2,product_img3,product_price,product_keywords,product_desc,product_label,product_sale) values ('$product_cat','$cat','$manufacturer_id',NOW(),'$product_title','$product_img1','$product_img2','$product_img3','$product_price','$product_keywords','$product_desc','$product_label','$product_sale')";
+    $insert_product = "insert into products (p_cat_id,cat_id,manufacturer_id,date,product_title,product_url,product_img1,product_img2,product_img3,product_price,product_keywords,product_desc,product_label,product_sale) values ('$product_cat','$cat','$manufacturer_id',NOW(),'$product_title','$product_url','$product_img1','$product_img2','$product_img3','$product_price','$product_keywords','$product_desc','$product_label','$product_sale')";
 
     $run_product = mysqli_query($con,$insert_product);
 

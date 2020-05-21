@@ -11,13 +11,19 @@ include("functions/functions.php");
 
 <?php
 
-if(isset($_GET['pro_id'])){
-
     $product_id = $_GET['pro_id'];
 
-    $get_product = "select * from products where product_id='$product_id'";
+    $get_product = "select * from products where product_url='$product_id'";
 
     $run_product = mysqli_query($con,$get_product);
+
+    $check_product = mysqli_num_rows($run_product);
+
+    if($check_product == 0){
+
+        echo "<script>window.open('index.php','_self')</script>";
+
+    }else{
 
     $row_products = mysqli_fetch_array($run_product);
 
@@ -64,8 +70,6 @@ if(isset($_GET['pro_id'])){
 
     $p_cat_title = $row_p_cat['p_cat_title'];
 
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -73,7 +77,7 @@ if(isset($_GET['pro_id'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>O-ECN Store</title>
+    <title>M-Dev Store</title>
     <link rel="stylesheet" href="styles/bootstrap-337.min.css">
     <link rel="stylesheet" href="font-awsome/css/font-awesome.min.css">
     <link rel="stylesheet" href="styles/style.css">
@@ -156,8 +160,8 @@ if(isset($_GET['pro_id'])){
 
                <a href="index.php" class="navbar-brand home"><!-- navbar-brand home Begin -->
 
-                   <img src="images/oecn-store-logo.png" alt="O-ECN-Store Logo" class="hidden-xs">
-                   <img src="images/oecn-store-logo-mobile.jpg" alt="O-ECN-Store Logo Mobile" class="visible-xs">
+                   <img src="images/ecom-store-logo.png" alt="M-dev-Store Logo" class="hidden-xs">
+                   <img src="images/ecom-store-logo-mobile.png" alt="M-dev-Store Logo Mobile" class="visible-xs">
 
                </a><!-- navbar-brand home Finish -->
 
@@ -479,6 +483,8 @@ if(isset($_GET['pro_id'])){
 
                     $pro_sale_price = $row_products['product_sale'];
 
+                    $pro_url = $row_products['product_url'];
+
                     $pro_img1 = $row_products['product_img1'];
 
                     $pro_label = $row_products['product_label'];
@@ -530,7 +536,7 @@ if(isset($_GET['pro_id'])){
 
                         <div class='product'>
 
-                            <a href='details.php?pro_id=$pro_id'>
+                            <a href='$pro_url'>
 
                                 <img class='img-responsive' src='admin_area/product_images/$pro_img1'>
 
@@ -546,7 +552,7 @@ if(isset($_GET['pro_id'])){
 
                                 <h3>
 
-                                    <a href='details.php?pro_id=$pro_id'>
+                                    <a href='$pro_url'>
 
                                         $pro_title
 
@@ -562,13 +568,13 @@ if(isset($_GET['pro_id'])){
 
                                 <p class='button'>
 
-                                    <a class='btn btn-default' href='details.php?pro_id=$pro_id'>
+                                    <a class='btn btn-default' href='$pro_url'>
 
                                         View Details
 
                                     </a>
 
-                                    <a class='btn btn-primary' href='details.php?pro_id=$pro_id'>
+                                    <a class='btn btn-primary' href='$pro_url'>
 
                                         <i class='fa fa-shopping-cart'></i> Add to Cart
 
@@ -609,3 +615,4 @@ if(isset($_GET['pro_id'])){
 
 </body>
 </html>
+<?php } ?>

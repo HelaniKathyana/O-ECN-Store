@@ -99,6 +99,8 @@ function getPro(){
 
         $pro_title = $row_products['product_title'];
 
+        $pro_url = $row_products['product_url'];
+
         $pro_price = $row_products['product_price'];
 
         $pro_sale_price = $row_products['product_sale'];
@@ -154,7 +156,7 @@ function getPro(){
 
             <div class='product'>
 
-                <a href='details.php?pro_id=$pro_id'>
+                <a href='$pro_url'>
 
                     <img class='img-responsive' src='admin_area/product_images/$pro_img1'>
 
@@ -170,7 +172,7 @@ function getPro(){
 
                     <h3>
 
-                        <a href='details.php?pro_id=$pro_id'>
+                        <a href='$pro_url'>
 
                             $pro_title
 
@@ -186,13 +188,13 @@ function getPro(){
 
                     <p class='button'>
 
-                        <a class='btn btn-default' href='details.php?pro_id=$pro_id'>
+                        <a class='btn btn-default' href='$pro_url'>
 
                             View Details
 
                         </a>
 
-                        <a class='btn btn-primary' href='details.php?pro_id=$pro_id'>
+                        <a class='btn btn-primary' href='$pro_url'>
 
                             <i class='fa fa-shopping-cart'></i> Add to Cart
 
@@ -418,6 +420,8 @@ function getProducts(){
 
         $pro_sale_price = $row_products['product_sale'];
 
+        $pro_url = $row_products['product_url'];
+
         $pro_img1 = $row_products['product_img1'];
 
         $pro_label = $row_products['product_label'];
@@ -469,7 +473,7 @@ function getProducts(){
 
             <div class='product'>
 
-                <a href='details.php?pro_id=$pro_id'>
+                <a href='$pro_url'>
 
                     <img class='img-responsive' src='admin_area/product_images/$pro_img1'>
 
@@ -485,7 +489,7 @@ function getProducts(){
 
                     <h3>
 
-                        <a href='details.php?pro_id=$pro_id'>
+                        <a href='$pro_url'>
 
                             $pro_title
 
@@ -501,13 +505,13 @@ function getProducts(){
 
                     <p class='button'>
 
-                        <a class='btn btn-default' href='details.php?pro_id=$pro_id'>
+                        <a class='btn btn-default' href='$pro_url'>
 
                             View Details
 
                         </a>
 
-                        <a class='btn btn-primary' href='details.php?pro_id=$pro_id'>
+                        <a class='btn btn-primary' href='$pro_url'>
 
                             <i class='fa fa-shopping-cart'></i> Add to Cart
 

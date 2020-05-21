@@ -24,6 +24,8 @@
 
         $p_title = $row_edit['product_title'];
 
+        $p_url = $row_edit['product_url'];
+
         $p_cat = $row_edit['p_cat_id'];
 
         $cat = $row_edit['cat_id'];
@@ -130,6 +132,22 @@
                       <div class="col-md-6"><!-- col-md-6 Begin -->
 
                           <input name="product_title" type="text" class="form-control" required value="<?php echo $p_title; ?>">
+
+                      </div><!-- col-md-6 Finish -->
+
+                   </div><!-- form-group Finish -->
+
+                   <div class="form-group"><!-- form-group Begin -->
+
+                      <label class="col-md-3 control-label"> Product Url </label>
+
+                      <div class="col-md-6"><!-- col-md-6 Begin -->
+
+                          <input name="product_url" type="text" class="form-control" required value="<?php echo $p_url; ?>">
+
+                            <br>
+
+                            <p style="font-weight:bold;font-style:italic;font-size:16px;"> Use Dash '-' for url. | Example: jacket-for-kids </p>
 
                       </div><!-- col-md-6 Finish -->
 
@@ -355,7 +373,17 @@
 
                       <div class="col-md-6"><!-- col-md-6 Begin -->
 
-                          <input name="product_label" type="text" class="form-control" required value="<?php echo $p_label; ?>">
+                        <select name="product_label">
+
+                              <option disabled> Select Label Product </option>
+
+                              <option value="<?php echo $p_label; ?>"> <?php echo $p_label; ?> </option>
+
+                                <option value="new">New</option>
+
+                                <option value="sale">Sale</option>
+
+                        </select>
 
                       </div><!-- col-md-6 Finish -->
 
@@ -394,6 +422,7 @@
 if(isset($_POST['update'])){
 
     $product_title = $_POST['product_title'];
+    $product_url = $_POST['product_url'];
     $product_cat = $_POST['product_cat'];
     $cat = $_POST['cat'];
     $manufacturer_id = $_POST['manufacturer'];
@@ -419,7 +448,7 @@ if(isset($_POST['update'])){
         move_uploaded_file($temp_name2,"product_images/$product_img2");
         move_uploaded_file($temp_name3,"product_images/$product_img3");
 
-        $update_product = "update products set p_cat_id='$product_cat',cat_id='$cat',manufacturer_id='$manufacturer_id',date=NOW(),product_title='$product_title',product_img1='$product_img1',product_img2='$product_img2',product_img3='$product_img3',product_price='$product_price',product_keywords='$product_keywords',product_desc='$product_desc',product_sale='$product_sale',product_label='$product_label' where product_id='$p_id'";
+        $update_product = "update products set p_cat_id='$product_cat',cat_id='$cat',manufacturer_id='$manufacturer_id',date=NOW(),product_title='$product_title',product_url='$product_url',product_img1='$product_img1',product_img2='$product_img2',product_img3='$product_img3',product_price='$product_price',product_keywords='$product_keywords',product_desc='$product_desc',product_sale='$product_sale',product_label='$product_label' where product_id='$p_id'";
 
         $run_product = mysqli_query($con,$update_product);
 
@@ -435,7 +464,7 @@ if(isset($_POST['update'])){
 
         // work when no update image
 
-        $update_product = "update products set p_cat_id='$product_cat',cat_id='$cat',manufacturer_id='$manufacturer_id',date=NOW(),product_title='$product_title',product_price='$product_price',product_keywords='$product_keywords',product_desc='$product_desc',product_sale='$product_sale',product_label='$product_label' where product_id='$p_id'";
+        $update_product = "update products set p_cat_id='$product_cat',cat_id='$cat',manufacturer_id='$manufacturer_id',date=NOW(),product_title='$product_title',product_url='$product_url',product_price='$product_price',product_keywords='$product_keywords',product_desc='$product_desc',product_sale='$product_sale',product_label='$product_label' where product_id='$p_id'";
 
         $run_product = mysqli_query($con,$update_product);
 
